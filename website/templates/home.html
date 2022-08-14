@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<style>
+.column{
+  padding: 10px;
+  width: 12.5%;
+  text-align: center;
+  border-color: black;
+}
+.col-md-2{
+  text-align: center;
+}
+
+</style>
+<br>
+    <h1 align="center">Notes</h1>
+    <ul class="list-group list-group-flush" id="notes">
+      {% for note in user.notes %}
+        <div class="row" >
+          <div class="column">
+            <h3>date</h3>
+            {{ note.date }}
+          </div>
+          <div class="column">
+            <h3>Topic</h3>
+            {{ note.data }}
+          </div>
+          <div class="column">
+            <h3>Absentees</h3>
+            {{ note.Att }}
+          </div>
+          <div class="column">
+            <h3>Raised by</h3>
+            {{ note.Rby }}
+          </div>
+          <div class="column">
+            <h3>ActionReq</h3>
+            {{ note.actons }}
+          </div>
+          <div class="column">
+            <h3>Action by</h3>
+            {{ note.Aby }}
+          </div>
+          <div class="column">
+            <h3>Extra Info</h3>
+            {{ note.Se }}
+          </div>
+        </div>
+      <li class="list-group-item">
+        
+        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul><br>
+    <form method="POST">
+      <div class="container" id="ww">
+        <div class="row" id="ww">
+          <div class="col-sm-2">
+            <h3>Topic</h3>
+            <textarea name="note" id="note" class="form-control"></textarea>
+          </div>
+          <div class="col-sm-2">
+            <h3>Absentees</h3>
+            <textarea name="Rby" id="Rby" class="form-control"></textarea>
+          </div>
+          <div class="col-sm-2">
+            <h3>Raised by</h3>
+            <textarea name="actons" id="actons" class="form-control"></textarea>
+          </div>
+          <div class="col-sm-2">
+            <h3>ActionReq</h3>
+            <textarea name="Aby" id="Aby" class="form-control"></textarea>
+          </div>
+          <div class="col-sm-2">
+            <h3>Action by</h3>
+          <textarea name="Se" id="Se" class="form-control"></textarea>
+          </div>
+          <div class="col-sm-2">
+            <h3>Extra Info</h3>
+            <textarea name="Att" id="Att" class="form-control"></textarea>
+            </div>
+        </div>
+    </div><br /><br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+      </div>
+    </form>
+    {% endblock %}
